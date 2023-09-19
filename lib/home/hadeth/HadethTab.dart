@@ -3,7 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:islami_c9_sat/home/hadeth/Hadeth.dart';
 import 'package:islami_c9_sat/home/hadeth/HadethNameWidget.dart';
 
-class HadethTab extends StatelessWidget {
+class HadethTab extends StatefulWidget {
+  @override
+  State<HadethTab> createState() => _HadethTabState();
+}
+
+class _HadethTabState extends State<HadethTab> {
   @override
   Widget build(BuildContext context) {
     if (allHadeth.isEmpty) loadHadethFile();
@@ -22,6 +27,7 @@ class HadethTab extends StatelessWidget {
                       width: 2, color: Theme.of(context).dividerColor))),
           child: Text(
             'Hadeth Number',
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
         Expanded(
@@ -61,5 +67,6 @@ class HadethTab extends StatelessWidget {
       Hadeth hadeth = Hadeth(title, content);
       allHadeth.add(hadeth);
     }
+    setState(() {});
   }
 }
