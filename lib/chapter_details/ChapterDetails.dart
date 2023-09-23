@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_c9_sat/MyThemeData.dart';
 import 'package:islami_c9_sat/chapter_details/VerseWidget.dart';
 
 class ChapterDetailsScreen extends StatefulWidget {
@@ -15,15 +16,20 @@ class _ChapterDetailsScreenState extends State<ChapterDetailsScreen> {
     var args = ModalRoute.of(context)?.settings.arguments as ChapterDetailsArgs;
     if (verses.isEmpty) loadFile(args.index);
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  'assets/images/main_background.jpg',
+                  MyThemeData.isDarkEnabled
+                      ? 'assets/images/main_background_dark.png'
+                      : 'assets/images/main_background.jpg',
                 ),
                 fit: BoxFit.fill)),
         child: Scaffold(
             appBar: AppBar(
-              title: Text(args.name),
+              title: Text(
+                args.name,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
             ),
             body: verses.isEmpty
                 ? Center(child: CircularProgressIndicator())

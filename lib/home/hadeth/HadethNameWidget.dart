@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c9_sat/chapter_details/ChapterDetails.dart';
+import 'package:islami_c9_sat/hadeth_details/HadethDetailsScreen.dart';
+import 'package:islami_c9_sat/home/hadeth/Hadeth.dart';
 
-class ChapterNameWidget extends StatelessWidget {
-  String name;
-  int index;
+class HadethNameWidget extends StatelessWidget {
+  Hadeth hadeth;
 
-  ChapterNameWidget(this.name, this.index);
+  HadethNameWidget(this.hadeth);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(ChapterDetailsScreen.routeName,
-            arguments: ChapterDetailsArgs(name, index));
+        Navigator.of(context)
+            .pushNamed(HadethDetailsScreen.routeName, arguments: hadeth);
       },
       child: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 4),
         child: Text(
-          name,
+          hadeth.title,
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),

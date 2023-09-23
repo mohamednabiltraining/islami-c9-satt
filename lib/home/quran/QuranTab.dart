@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_c9_sat/home/quran/ChapterNameWidget.dart';
 
 class QuranTab extends StatelessWidget {
@@ -135,7 +136,8 @@ class QuranTab extends StatelessWidget {
                   horizontal: BorderSide(
                       width: 2, color: Theme.of(context).dividerColor))),
           child: Text(
-            'Chapter Name',
+            AppLocalizations.of(context)!.chapter_name,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
         Expanded(
