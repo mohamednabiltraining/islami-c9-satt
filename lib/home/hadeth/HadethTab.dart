@@ -28,10 +28,10 @@ class _HadethTabState extends State<HadethTab> {
                 border: Border.symmetric(
                     horizontal: BorderSide(
                         color: Theme.of(context).dividerColor, width: 2))),
-            child: Text(
-              'Hadeth',
-              style: TextStyle(fontSize: 24),
-            )),
+          child: Text(
+            'Hadeth',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),),
         Expanded(
           flex: 3,
           child: allAhadeth.isEmpty

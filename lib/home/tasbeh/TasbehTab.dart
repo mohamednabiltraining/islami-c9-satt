@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../MyThemeData.dart';
+
 class TasbehTab extends StatefulWidget {
   @override
   State<TasbehTab> createState() => _TasbehTabState();
@@ -25,25 +27,31 @@ class _TasbehTabState extends State<TasbehTab> {
             children: [
               Container(
                   margin: EdgeInsets.only(left: 50),
-        child: Image.asset('assets/images/head_of_sebha.png')),
+        child: Image.asset(
+            MyThemeData.isDarkEnabled? 'assets/images/head_of_sebha_dark.png':
+            'assets/images/head_of_sebha.png',
+            )),
               Transform.rotate(
                 angle: rotationAngle,
                 child: Container(
 
                   margin: EdgeInsets.symmetric(vertical: 80),
-                    child: Image.asset('assets/images/body_of_sebha.png')),
+                    child: Image.asset(
+                        MyThemeData.isDarkEnabled? 'assets/images/body_of_sebha_dark.png':
+                        'assets/images/body_of_sebha.png'
+                        )),
               ),
 
             ],
           ),
 
-          Text('Number of tasbehat',style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600),),
+          Text('Number of tasbehat',style:Theme.of(context).textTheme.titleMedium,),
           Container(
             margin: EdgeInsets.all(15),
             child:TextButton(
               style: TextButton.styleFrom(
-                  foregroundColor:Colors.black,
-                  backgroundColor: Color(0xffc5b391),
+                  foregroundColor:Theme.of(context).colorScheme.onPrimary,
+                  backgroundColor: Theme.of(context).colorScheme.tertiary,
                   padding:  EdgeInsets.all(15.0),
                   textStyle:  TextStyle(fontSize: 35),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))
@@ -75,12 +83,12 @@ class _TasbehTabState extends State<TasbehTab> {
             margin: EdgeInsets.all(5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Theme.of(context).dividerColor,
+              color: Theme.of(context).colorScheme.secondary,
             )
             ,
             child:Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text(tasbeh[index],style: TextStyle(fontSize: 25,color: Colors.white ),),
+              child: Text(tasbeh[index],style: Theme.of(context).textTheme.titleLarge,),
             ),
           ),
 
