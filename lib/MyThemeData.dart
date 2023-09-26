@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyThemeData {
-  static bool isDarkEnabled = true;
   static const Color lightPrimary = Color(0xFFB7935F);
   static const Color darkPrimary = Color(0xFF141A2E);
   static const Color darkSecondry = Color(0xFFFACC1D);

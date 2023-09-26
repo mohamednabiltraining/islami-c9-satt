@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_c9_sat/MyThemeData.dart';
 import 'package:islami_c9_sat/home/hadeth/HadethTab.dart';
 import 'package:islami_c9_sat/home/quran/QuranTab.dart';
 import 'package:islami_c9_sat/home/radio/RadioTab.dart';
 import 'package:islami_c9_sat/home/settings/SettingsTab.dart';
 import 'package:islami_c9_sat/home/tasbeh/TasbehTab.dart';
+import 'package:islami_c9_sat/providers/SettingsProvider.dart';
+import 'package:provider/provider.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
 
@@ -18,15 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage(
-                MyThemeData.isDarkEnabled
-                    ? 'assets/images/main_background_dark.png'
-                    : 'assets/images/main_background.jpg',
+                settingsProvider.getMainBackground(),
               ),
               fit: BoxFit.fill)),
       child: Scaffold(
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
                 icon: Icon(Icons.settings),
-                label: "Settings")
+                label: AppLocalizations.of(context)!.settings)
           ],
         ),
         body: tabs[selectedTabIndex],

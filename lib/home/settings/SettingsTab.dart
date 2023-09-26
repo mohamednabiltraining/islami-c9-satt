@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_c9_sat/home/settings/LanguageBottomSheet.dart';
 import 'package:islami_c9_sat/home/settings/ThemeBottomSheet.dart';
+import 'package:islami_c9_sat/providers/SettingsProvider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatefulWidget {
   @override
@@ -10,6 +13,7 @@ class SettingsTab extends StatefulWidget {
 class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -18,7 +22,7 @@ class _SettingsTabState extends State<SettingsTab> {
           SizedBox(
             height: 48,
           ),
-          Text('Theme'),
+          Text(AppLocalizations.of(context)!.theme),
           SizedBox(
             height: 8,
           ),
@@ -38,7 +42,9 @@ class _SettingsTabState extends State<SettingsTab> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Light',
+                      settingsProvider.isDarkEnabled()
+                          ? AppLocalizations.of(context)!.dark
+                          : AppLocalizations.of(context)!.light,
                       style: TextStyle(fontSize: 18),
                     ),
                     Icon(Icons.arrow_drop_down)
@@ -48,7 +54,7 @@ class _SettingsTabState extends State<SettingsTab> {
           SizedBox(
             height: 24,
           ),
-          Text('Language'),
+          Text(AppLocalizations.of(context)!.language),
           SizedBox(
             height: 8,
           ),
@@ -68,7 +74,9 @@ class _SettingsTabState extends State<SettingsTab> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'English',
+                      settingsProvider.currentLocale == 'en'
+                          ? 'English'
+                          : 'العربيه',
                       style: TextStyle(fontSize: 18),
                     ),
                     Icon(Icons.arrow_drop_down)

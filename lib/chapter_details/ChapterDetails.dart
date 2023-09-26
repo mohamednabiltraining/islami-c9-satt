@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_c9_sat/MyThemeData.dart';
 import 'package:islami_c9_sat/chapter_details/VerseWidget.dart';
+import 'package:islami_c9_sat/providers/SettingsProvider.dart';
+import 'package:provider/provider.dart';
 
 class ChapterDetailsScreen extends StatefulWidget {
   static const String routeName = 'chapter_details';
@@ -14,14 +15,13 @@ class _ChapterDetailsScreenState extends State<ChapterDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ChapterDetailsArgs;
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     if (verses.isEmpty) loadFile(args.index);
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  MyThemeData.isDarkEnabled
-                      ? 'assets/images/main_background_dark.png'
-                      : 'assets/images/main_background.jpg',
+                  settingsProvider.getMainBackground(),
                 ),
                 fit: BoxFit.fill)),
         child: Scaffold(

@@ -6,5 +6,9 @@
   "radio": "الراديو",
   "settings": "الاعدادات",
   "hadeth_number": "رقم الحديث",
-  "chapter_name": "اسم السوره"
+  "chapter_name": "اسم السوره",
+  "theme": "السمات",
+  "language": "اللغه",
+  "light": "نهاري",
+  "dark": "ليلي"
 }
